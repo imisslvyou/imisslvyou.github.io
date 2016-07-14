@@ -17,7 +17,7 @@
 	.warp .head h1{ position:absolute;left:130px;height:120px;line-height:120px;}
 	.warp .head .head_ul1{ position:absolute;left:766px;height:120px;}
 	.warp .head .head_ul1 li{ float:left;margin:30px 0 0 10px;width:100px;height:60px;text-align:center;line-height:60px;cursor:pointer;}
-	.warp .head .head_ul1 li.head_ul1_active{ position:absolute;left:0;top:0;background:#fff;border-radius:5px;opacity:0.2;z-index:1;}
+	.warp .head .head_ul1 li.head_ul1_active{ position:absolute;left:0;top:0;background:#eee;border-radius:5px;opacity:0.8;z-index:1;}
 	
 	.warp .limitBox{ position:absolute;left:0;width:1206px;height:283px;margin-top:50px;overflow:hidden;}
 	.warp .content{ position:absolute;left:0;width:9999px;height:283px;}
@@ -32,9 +32,14 @@
 	.warp .content .con_ul2 li{ position:relative;background:#fff;color:#666;cursor:pointer;font:20px Microsoft YaHei;text-align:center;line-height:140px;overflow:hidden;}
 	.warp .content .con_ul2 li span{ position:absolute;top:0;left:0;width:100%;height:100%;background:#222;}
 	.warp .content .con_ul3{ left:2612px;}
-	.warp .content .con_ul4{ left:3918px;}
+	.warp .content .con_ul4{ left:3918px;width:1204px;height:281px;border:1px solid #fff;}
+	.warp .content .con_ul4 p{ width:1000px;margin:40px auto;margin-bottom:20px;font:22px songti;overflow:hidden;}
+	.warp .content .con_ul4 p span{ opacity:0;}
+	.warp .content .con_ul4 ol{ width:1000px;margin:0 auto;font:20px songti;}
+	.warp .content .con_ul4 ol li{ float:none;width:100%;height:auto;border:none;margin:0;margin-bottom:5px;}
 </style>
 <script src="javaScript/move.js"></script>
+<script src="javaScript/moveG.js"></script>
 <script>
 function toZero(n){
 	return n < 10?"0" + n:"" + n;
@@ -109,6 +114,43 @@ window.onload = function(){
 //movePage start:
 					move(oUlDiv,{left:-(aUl[0].offsetWidth + interval)*index},{duration:1500});
 //movePage end:
+					
+					if(index == 3){
+						console.log(1);
+						//oBar.onclick = null;
+						var oConUlP = document.getElementById("con_ulP");
+						if(!oConUlP.innerHTML){
+							var aSpan = oConUlP.children;
+							var str = "欢迎来访我的个人网站，我是一名前端工程师，热衷于学习前端各种新技术，每天奔跑在探索前端的道路上......";
+							
+							for(var i = 0; i < str.length; i++){
+								var oSpan = document.createElement("span");
+								oSpan.innerHTML = str.charAt(i);
+								
+								oConUlP.appendChild(oSpan);
+							}
+							
+							for(var i = 0; i < aSpan.length; i++){
+								aSpan[i].style.color = "#fff";
+								aSpan[i].style.float = "left";
+								aSpan[i].style.marginBottom = "16px";
+							}
+							var i = 0;
+							var timer2 = null;
+							clearInterval(timer2);
+							var timer2 = setInterval(function(){
+								//alert(1);
+								move(aSpan[i],{opacity:1});
+								
+								i++;
+								
+								if(i == str.length){
+									clearInterval(timer2);
+								}
+								
+							},100);
+						}
+					}
 				};
 			};
 		})(i);
@@ -148,16 +190,17 @@ window.onload = function(){
 	var oLi10 = document.getElementById("li10");
 	
 	for(var i = 0; i < aConUl2Li.length; i++){
-		var aLiAspan = aConUl2Li[i].children[0];
+		
 		aConUl2Li[i].onmouseover = function(){
-			this.children[0].style.webkitTransform = "translateY(-140px)";
-			this.children[0].style.webkitTransition = ".5s all ease";
-			//this.children[0].style.top = -this.offsetHeight + "px";
+			var _this = this;
+			//moveg(_this.children[0],{top:-140},{duration:500,easing:Tween.Cubic.easeOut});
+			move(_this.children[0],{top:-140});
 		};
 		aConUl2Li[i].onmouseout = function(){
-			this.children[0].style.webkitTransform = "translateY(0)";
-			
-			//this.children[0].style.top = 0;
+			//this.children[0].style.webkitTransform = "translateY(0)";
+			//move(aConUl2Li,{top:140},{duration:500});	
+			var _this = this;
+			moveg(_this.children[0],{top:0},{duration:700,easing:Tween.Bounce.easeOut});
 		};
 	}
 	
@@ -167,6 +210,11 @@ window.onload = function(){
 	oLi2.onclick = function(){
 		window.open("html/screensaver.html","_blank");
 	};
+	
+	
+	
+	
+	
 };
 </script>
 </head>
@@ -200,8 +248,8 @@ window.onload = function(){
                 <li><span>JavaScript</span></li>
             </ul>
             <ul class="con_ul2" id="con_ul2">
-                <li id="li1">runningBall<span></span></li>
-                <li id="li2">screensaver<span></span></li>
+                <li id="li1" style="background:url(image/aul2bg1.png); background-size:100% 100%;">runningBall<span></span></li>
+                <li id="li2" style="background:url(image/aul2bg2.png); background-size:100% 100%;">screensaver<span></span></li>
                 <li id="li3">未完待续<span></span></li>
                 <li id="li4">未完待续<span></span></li>
                 <li id="li5">未完待续<span></span></li>
@@ -224,16 +272,13 @@ window.onload = function(){
                 <li></li>
             </ul>
             <ul class="con_ul4">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li class="active"><img src="image/libj.png"/></li>
-                <li></li>
-                <li></li>
-                <li></li>
+            	<p id="con_ulP"></p>
+                <ol>
+                	<li><span>name&nbsp;: 尤章鹏</span></li>
+                	<li><span>phone : 15990714612</span></li>
+                	<li><span>email : imisslvyou@sina.com</span></li>
+                	<li><span>Q&nbsp;Q&nbsp;: 528789572</span></li>
+                </ol>
             </ul>
         </div>
     </div>

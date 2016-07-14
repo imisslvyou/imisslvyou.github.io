@@ -11,7 +11,7 @@
 
 </style>
 <script>
-var arr=['柳岩','志林','高圆圆','潇潇','KFC','柳岩2','志林2','高圆圆2','潇潇2','KFC2'];
+//var arr=['柳岩','志林','高圆圆','潇潇','KFC','柳岩2','志林2','高圆圆2','潇潇2','KFC2'];
 window.onload=function(){
 	
 	//1.在5秒内，随机出现10个盒子
@@ -27,12 +27,12 @@ function createBox(){
 	var b=rnd(0,256);
 	oBox.style.background='rgb('+r+','+g+','+b+')';
 	
-	oBox.innerHTML=arr[rnd(0,10)];
+	//oBox.innerHTML=arr[rnd(0,10)];
 	document.body.appendChild(oBox);
 	
 	
-	var speedX=rnd(1,30);
-	var speedY=rnd(1,30);
+	var speedX=rnd(10,30);
+	var speedY=rnd(10,20);
 	move(oBox,speedX,speedY);
 	drag(oBox);	
 }
