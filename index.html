@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="author" content="uJavaScript" />
 <meta name="copyright" content="uJavaScript" />
-<title>uJavaScript</title>
-<link rel="shortcut icon" href="icon/1.png" />
+<link rel="shortcut icon" href="icon/1.ico" />
+<title>RESUME</title>
 <style>
 	*{ margin:0; padding:0; list-style:none;}
 	html{ overflow:hidden;}
@@ -17,7 +17,7 @@
 	.warp .head h1{ position:absolute;left:130px;height:120px;line-height:120px;}
 	.warp .head .head_ul1{ position:absolute;left:766px;height:120px;}
 	.warp .head .head_ul1 li{ float:left;margin:30px 0 0 10px;width:100px;height:60px;text-align:center;line-height:60px;cursor:pointer;}
-	.warp .head .head_ul1 li.head_ul1_active{ position:absolute;left:0;top:0;background:#999;border-radius:5px;opacity:0.5;z-index:1;}
+	.warp .head .head_ul1 li.head_ul1_active{ position:absolute;left:0;top:0;background:#fff;border-radius:5px;opacity:0.2;z-index:1;}
 	
 	.warp .limitBox{ position:absolute;left:0;width:1206px;height:283px;margin-top:50px;overflow:hidden;}
 	.warp .content{ position:absolute;left:0;width:9999px;height:283px;}
@@ -27,9 +27,10 @@
 	.warp .content li img{ position:absolute;left:0;top:0;width:240px;height:140px;}
 	
 	.warp .content .con_ul1 li{ position:relative;overflow:hidden;}
-	.warp .content .con_ul1 span{ position:absolute;left:-240px;top:0;width:100%; height:100%; background:#555;}
+	.warp .content .con_ul1 span{ position:absolute;left:-240px;top:0;width:100%; height:100%; background:#333;}
 	.warp .content .con_ul2{ left:1306px;}
-	.warp .content .con_ul2 li{ cursor:pointer;}
+	.warp .content .con_ul2 li{ position:relative;background:#fff;color:#666;cursor:pointer;font:20px Microsoft YaHei;text-align:center;line-height:140px;overflow:hidden;}
+	.warp .content .con_ul2 li span{ position:absolute;top:0;left:0;width:100%;height:100%;background:#222;}
 	.warp .content .con_ul3{ left:2612px;}
 	.warp .content .con_ul4{ left:3918px;}
 </style>
@@ -133,6 +134,9 @@ window.onload = function(){
 		},30);
 	}
 //navBar end;
+	var oConUl2 = document.getElementById("con_ul2");
+	var aConUl2Li = oConUl2.children;
+	
 	var oLi1 = document.getElementById("li1");
 	var oLi2 = document.getElementById("li2");
 	var oLi3 = document.getElementById("li3");
@@ -143,11 +147,25 @@ window.onload = function(){
 	var oLi9 = document.getElementById("li9");
 	var oLi10 = document.getElementById("li10");
 	
+	for(var i = 0; i < aConUl2Li.length; i++){
+		var aLiAspan = aConUl2Li[i].children[0];
+		aConUl2Li[i].onmouseover = function(){
+			this.children[0].style.webkitTransform = "translateY(-140px)";
+			this.children[0].style.webkitTransition = ".5s all ease";
+			//this.children[0].style.top = -this.offsetHeight + "px";
+		};
+		aConUl2Li[i].onmouseout = function(){
+			this.children[0].style.webkitTransform = "translateY(0)";
+			
+			//this.children[0].style.top = 0;
+		};
+	}
+	
 	oLi1.onclick = function(){
-		window.open("javaScript/1.html","_blank");
+		window.open("html/runningBall.html","_blank");
 	};
 	oLi2.onclick = function(){
-		window.open("javaScript/2.html","_blank");
+		window.open("html/screensaver.html","_blank");
 	};
 };
 </script>
@@ -170,28 +188,28 @@ window.onload = function(){
     <div class="limitBox">
         <div class="content" id="content">
             <ul class="con_ul1" id="con_ul1">
-                <li><span>11111</span></li>
-                <li><span>22222</span></li>
-                <li><span>33333</span></li>
-                <li><span>44444</span></li>
-                <li><span>55555</span></li>
-                <li><span>66666</span></li>
-                <li class="active"><span>77777</span><img src="img/libj.png"/></li>
-                <li><span>88888</span></li>
-                <li><span>99999</span></li>
-                <li><span>00000</span></li>
+                <li><span>JavaScript</span></li>
+                <li><span>JavaScript</span></li>
+                <li><span>JavaScript</span></li>
+                <li><span>JavaScript</span></li>
+                <li><span>JavaScript</span></li>
+                <li><span>JavaScript</span></li>
+                <li class="active"><span></span><img src="image/libj.png"/></li>
+                <li><span>JavaScript</span></li>
+                <li><span>JavaScript</span></li>
+                <li><span>JavaScript</span></li>
             </ul>
-            <ul class="con_ul2">
-                <li id="li1"></li>
-                <li id="li2"></li>
-                <li id="li3"></li>
-                <li id="li4"></li>
-                <li id="li5"></li>
-                <li id="li6"></li>
-                <li class="active"><img src="img/libj.png"/></li>
-                <li id="li8"></li>
-                <li id="li9"></li>
-                <li id="li10"></li>
+            <ul class="con_ul2" id="con_ul2">
+                <li id="li1">runningBall<span></span></li>
+                <li id="li2">screensaver<span></span></li>
+                <li id="li3">未完待续<span></span></li>
+                <li id="li4">未完待续<span></span></li>
+                <li id="li5">未完待续<span></span></li>
+                <li id="li6">未完待续<span></span></li>
+                <li class="active"><span></span><img src="image/libj.png"/></li>
+                <li id="li8">未完待续<span></span></li>
+                <li id="li9">未完待续<span></span></li>
+                <li id="li10">未完待续<span></span></li>
             </ul>
             <ul class="con_ul3">
                 <li></li>
@@ -200,7 +218,7 @@ window.onload = function(){
                 <li></li>
                 <li></li>
                 <li></li>
-                <li class="active"><img src="img/libj.png"/></li>
+                <li class="active"><img src="image/libj.png"/></li>
                 <li></li>
                 <li></li>
                 <li></li>
@@ -212,7 +230,7 @@ window.onload = function(){
                 <li></li>
                 <li></li>
                 <li></li>
-                <li class="active"><img src="img/libj.png"/></li>
+                <li class="active"><img src="image/libj.png"/></li>
                 <li></li>
                 <li></li>
                 <li></li>
