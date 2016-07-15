@@ -1,0 +1,104 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="uJavaScript" />
+<meta name="copyright" content="uJavaScript" />
+<title>uJavaScript</title>
+<style>
+*{margin:0; padding:0; list-style:none;}
+body{background:#fff; overflow:hidden;}
+ul{width:133px; height:200px; margin:200px auto; position:relative; -webkit-transform-style:preserve-3d; -webkit-transform:perspective(800px) rotateX(0) rotateY(0); /*background:#ccc;*/}
+ul li{width:133px; height:200px; position:absolute; top:0; left:0; -webkit-transform: rotateY(0deg) translateZ(0px); border-radius:15px; overflow:hidden; box-shadow:0px 0px 20px #fff;}
+ul li img{ width:100%;height:100%;}
+</style>
+<script>
+function getStyle(obj,sName){
+	return (obj.currentStyle||getComputedStyle(obj,false))[sName];
+}
+window.onload=function(){
+	var oUl = document.querySelector('ul');
+	var aLi = document.querySelectorAll('ul li');
+	var bOk = false;
+	for(var i=0;i<aLi.length;i++){
+		aLi[i].style.WebkitTransition = '1s all ease '+(12-i)*100+'ms';
+		aLi[i].style.WebkitTransform = 'rotateY('+i*360/12+'deg) translateZ(350px)';
+	}
+	function tranEnd(){
+		aLi[0].removeEventListener('transitionend',tranEnd,false);
+		bOk = true;
+	}
+	aLi[0].addEventListener('transitionend',tranEnd,false);
+	var x = 0;
+	var y = 0;
+	var iSpeedX = 0;
+	var iSpeedY = 0;
+	var lastX = 0;
+	var lastY = 0;
+	var timer = null;
+	oUl.onmousedown=function(ev){
+		if(!bOk)return;
+		clearInterval(timer);
+		var disX = ev.pageX-y;
+		var disY = ev.pageY-x;
+		document.onmousemove=function(ev){
+			x = ev.pageY-disY;
+			y = ev.pageX-disX;
+			oUl.style.WebkitTransform = 'perspective(800px) rotateX('+-x/5+'deg) rotateY('+y/5+'deg)';
+			iSpeedX = ev.pageX-lastX;
+			iSpeedY = ev.pageY-lastY;
+			
+			lastX = ev.pageX;
+			lastY = ev.pageY;
+		};
+		document.onmouseup=function(){
+			document.onmousemove=null;
+			document.onmouseup=null;
+			clearInterval(timer);
+			timer = setInterval(function(){
+				iSpeedX*=0.95;
+				iSpeedY*=0.95;
+				x += iSpeedY;
+				y += iSpeedX;
+				oUl.style.WebkitTransform = 'perspective(800px) rotateX('+-x/5+'deg) rotateY('+y/5+'deg)';
+				
+				if(Math.abs(iSpeedX)<1)iSpeedX=0;
+				if(Math.abs(iSpeedY)<1)iSpeedY=0;
+				if(iSpeedX==0&&iSpeedY==0){
+					clearInterval(timer);
+				}
+			},30);
+		};
+		return false;
+	};
+	
+};
+</script>
+</head>
+
+<body>
+<ul>
+	<li><img src="../image/7.png" /></li>
+	<li><img src="../image/3dRing.png" /></li>
+	<li><img src="../image/2.png" /></li>
+	<li><img src="../image/3.png" /></li>
+	<li><img src="../image/4.png" /></li>
+	<li><img src="../image/5.png" /></li>
+	<li><img src="../image/6.png" /></li>
+	<li><img src="../image/8.png" /></li>
+	<li><img src="../image/9.png" /></li>
+	<li><img src="../image/10.png" /></li>
+	<li><img src="../image/11.png" /></li>
+	<li><img src="../image/12.png" /></li>
+</ul>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
