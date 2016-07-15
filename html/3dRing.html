@@ -7,10 +7,9 @@
 <title>uJavaScript</title>
 <style>
 *{margin:0; padding:0; list-style:none;}
-body{background:#fff; overflow:hidden;}
+body{background:#000; overflow:hidden;}
 ul{width:133px; height:200px; margin:200px auto; position:relative; -webkit-transform-style:preserve-3d; -webkit-transform:perspective(800px) rotateX(0) rotateY(0); /*background:#ccc;*/}
 ul li{width:133px; height:200px; position:absolute; top:0; left:0; -webkit-transform: rotateY(0deg) translateZ(0px); border-radius:15px; overflow:hidden; box-shadow:0px 0px 20px #fff;}
-ul li img{ width:100%;height:100%;}
 </style>
 <script>
 function getStyle(obj,sName){
@@ -22,7 +21,7 @@ window.onload=function(){
 	var bOk = false;
 	for(var i=0;i<aLi.length;i++){
 		aLi[i].style.WebkitTransition = '1s all ease '+(12-i)*100+'ms';
-		aLi[i].style.WebkitTransform = 'rotateY('+i*360/12+'deg) translateZ(350px)';
+		aLi[i].style.WebkitTransform = 'rotateY('+i*360/12+'deg) translateZ(380px)';
 	}
 	function tranEnd(){
 		aLi[0].removeEventListener('transitionend',tranEnd,false);
@@ -78,18 +77,19 @@ window.onload=function(){
 
 <body>
 <ul>
-	<li><img src="../image/7.png" /></li>
-	<li><img src="../image/3dRing.png" /></li>
-	<li><img src="../image/2.png" /></li>
-	<li><img src="../image/3.png" /></li>
-	<li><img src="../image/4.png" /></li>
-	<li><img src="../image/5.png" /></li>
-	<li><img src="../image/6.png" /></li>
-	<li><img src="../image/8.png" /></li>
-	<li><img src="../image/9.png" /></li>
-	<li><img src="../image/10.png" /></li>
-	<li><img src="../image/11.png" /></li>
-	<li><img src="../image/12.png" /></li>
+	<li><img src="../image/3dRingImg/1.jpg" /></li>
+	<li><img src="../image/3dRingImg/2.jpg" /></li>
+	<li><img src="../image/3dRingImg/3.jpg" /></li>
+	<li><img src="../image/3dRingImg/4.jpg" /></li>
+	<li><img src="../image/3dRingImg/5.jpg" /></li>
+	<li><img src="../image/3dRingImg/6.jpg" /></li>
+	<li><img src="../image/3dRingImg/2.jpg" /></li>
+	<li><img src="../image/3dRingImg/7.jpg" /></li>
+	<li><img src="../image/3dRingImg/8.jpg" /></li>
+	<li><img src="../image/3dRingImg/6.jpg" /></li>
+	<li><img src="../image/3dRingImg/9.jpg" /></li>
+	<li><img src="../image/3dRingImg/10.jpg" /></li>
+	<li><img src="../image/3dRingImg/11.jpg" /></li>
 </ul>
 </body>
 </html>
