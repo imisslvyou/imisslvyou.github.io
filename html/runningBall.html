@@ -38,6 +38,9 @@ function createBox(){
 }
 function rnd(n,m){return parseInt(n+Math.random()*(m-n))}
 function drag(oDiv){
+	oDiv.onmouseover = function(){
+		this.style.cursor = "move";
+	};
 	oDiv.onmousedown=function(ev){
 		clearInterval(oDiv.timer);
 		var lastX=0,lastY=0;
