@@ -203,6 +203,7 @@ window.onload = function(){
 	var aConUl2Li = oConUl3.children;
 	var len = aConUl2Li.length;
 	
+		
 	for(var i = 0; i < len; i++){
 		aConUl2Li[i].onmouseover = function(){
 			var oUl = this.children[0];
@@ -215,6 +216,15 @@ window.onload = function(){
 			move(oUl,{opacity:0,height:0});	
 		};
 	}
+	var o2048 = document.getElementById("2048");
+	var oFish = document.getElementById("fish");
+	
+	o2048.onclick = function(){
+		window.open("html/2048.html","_blank");
+	};
+	oFish.onclick = function(){
+		window.open("html/fish.html","_blank");
+	};
 //
 	
 	
